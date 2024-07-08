@@ -13,58 +13,43 @@ questions = [
         "answer": "A container engine"
     },
     {
-        "question": "Which command is used to build an image in Podman?",
+        "question": "Which company develops Podman?",
         "options": [
-            "podman build",
-            "podman create",
-            "podman init"
+            "Red Hat",
+            "Google",
+            "Microsoft"
         ],
-        "answer": "podman build"
+        "answer": "Red Hat"
     },
     {
-        "question": "How do you list all containers in Podman?",
+        "question": "Can Podman run containers without requiring a daemon?",
         "options": [
-            "podman ps",
-            "podman list",
-            "podman containers"
+            "Yes",
+            "No",
+            "Only in certain configurations",
+            "It depends on the operating system"
         ],
-        "answer": "podman ps"
+        "answer": "Yes"
     },
     {
-        "question": "Which command is used to remove a container in Podman?",
+        "question": "How do you pull an image from a container registry in Podman?",
         "options": [
-            "podman rm",
-            "podman delete",
-            "podman remove"
+            "podman image fetch",
+            "podman image pull",
+            "podman image get",
+            "podman image download"
         ],
-        "answer": "podman rm"
+        "answer": "podman image pull"
     },
     {
-        "question": "How do you run a container in the background in Podman?",
+        "question": "Which option allows you to run a container in the background?",
         "options": [
-            "podman run -d",
-            "podman run -b",
-            "podman run --background"
+            "-d",
+            "-t",
+            "-i",
+            "-p"
         ],
-        "answer": "podman run -d"
-    },
-    {
-        "question": "What is the default network mode for Podman containers?",
-        "options": [
-            "bridge",
-            "host",
-            "none"
-        ],
-        "answer": "bridge"
-    },
-    {
-        "question": "How do you inspect the details of an image in Podman?",
-        "options": [
-            "podman inspect",
-            "podman details",
-            "podman info"
-        ],
-        "answer": "podman inspect"
+        "answer": "-d"
     }
 ]
 
