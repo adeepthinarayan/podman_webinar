@@ -34,4 +34,4 @@ def quiz():
     return render_template("quiz.html", questions=questions, selected_options=selected_options)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
