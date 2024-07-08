@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podman Quiz</title>
+    <style>
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Podman Quiz</h1>
+    <form method="POST">
+        {% for idx, question in enumerate(questions) %}
+            <fieldset>
+                <legend>{{ question.question }}</legend>
+                {% for option in question.options %}
+                    <label>
+                        <input type="radio" name="question-{{ idx }}" value="{{ option }}"
+                        {% if selected_options[idx] == option %}checked{% endif %}>
+                        {{ option }}
+                        {% if selected_options[idx] == option and option == question.answer %}
+                            <span class="correct">✔</span>
+                        {% endif %}
+                    </label><br>
+                {% endfor %}
+            </fieldset>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
