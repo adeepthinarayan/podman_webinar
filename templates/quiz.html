@@ -14,15 +14,15 @@
 <body>
     <h1>Podman Quiz</h1>
     <form method="POST">
-        {% for idx, question in enumerate(questions) %}
+        {% for question in questions %}
             <fieldset>
                 <legend>{{ question.question }}</legend>
                 {% for option in question.options %}
                     <label>
-                        <input type="radio" name="question-{{ idx }}" value="{{ option }}"
-                        {% if selected_options[idx] == option %}checked{% endif %}>
+                        <input type="radio" name="question-{{ loop.index0 }}" value="{{ option }}"
+                        {% if selected_options[loop.index0] == option %}checked{% endif %}>
                         {{ option }}
-                        {% if selected_options[idx] == option and option == question.answer %}
+                        {% if selected_options[loop.index0] == option and option == question.answer %}
                             <span class="correct">✔</span>
                         {% endif %}
                     </label><br>
