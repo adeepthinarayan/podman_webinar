@@ -5,31 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Podman Quiz</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        fieldset {
+            border: none;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
         .correct {
             color: green;
             font-weight: bold;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
     <h1>Podman Quiz</h1>
-    <form method="POST">
-        {% for question in questions %}
-            <fieldset>
-                <legend>{{ question.question }}</legend>
-                {% for option in question.options %}
-                    <label>
-                        <input type="radio" name="question-{{ loop.index0 }}" value="{{ option }}"
-                        {% if selected_options[loop.index0] == option %}checked{% endif %}>
-                        {{ option }}
-                        {% if selected_options[loop.index0] == option and option == question.answer %}
-                            <span class="correct">✔</span>
-                        {% endif %}
-                    </label><br>
-                {% endfor %}
-            </fieldset>
-        {% endfor %}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="quiz-container">
+        <form method="POST">
+            {% for idx, question in enumerate(questions) %}
+                <fieldset>
+                    <legend>{{ question.question }}</legend>
+                    {% for option in question.options %}
+                        <label>
+                            <input type="radio" name="question-{{ idx }}" value="{{ option }}"
+                            {% if selected_options[idx] == option %}checked{% endif %}>
+                            {{ option }}
+                            {% if selected_options[idx] == option and option == question.answer %}
+                                <span class="correct">✔</span>
+                            {% endif %}
+                        </label>
+                    {% endfor %}
+                </fieldset>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
